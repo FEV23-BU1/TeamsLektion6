@@ -351,7 +351,6 @@ public class SocketExercise3
         );
 
         serverSocket.Bind(ipEndpoint);
-
         serverSocket.Listen();
 
         Socket clientSocket = serverSocket.Accept();

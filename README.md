@@ -69,7 +69,48 @@ Exempel:
 
 # Svar
 
-Javisst.
+För båda:
+
+1. Importera `System.Net` och `System.Net.Sockets`
+2. Lägg upp en ip address och ip endpoint:
+
+```c#
+IPAddress ipAddress = new IPAddress(new byte[] { 127, 0, 0, 1 });
+IPEndPoint ipEndpoint = new IPEndPoint(ipAddress, 25000);
+```
+
+3. Skapa en socket:
+
+```c#
+Socket socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+```
+
+För socket server:
+
+1. Bind och börja lyssna efter anslutningar:
+
+```c#
+serverSocket.Bind(ipEndpoint);
+serverSocket.Listen();
+```
+
+2. Acceptera anslutningar:
+
+```c#
+Socket clientSocket = serverSocket.Accept();
+```
+
+3. Börja läsa och skicka meddelanden
+
+För socket client:
+
+1. Anslut till server:
+
+```c#
+clientSocket.Connect(ipEndpoint);
+```
+
+2. Börja läsa och skicka meddelanden
 
 ---
 
